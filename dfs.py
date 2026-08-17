@@ -1,14 +1,11 @@
-# DFS function
 def dfs(graph, node, visited):
     if node not in visited:
         print(node, end=" ")
         visited.add(node)
 
-        for neighbor in graph[node]:
-            dfs(graph, neighbor, visited)
+        for n in graph[node]:
+            dfs(graph, n, visited)
 
-
-# Graph represented as an adjacency list
 graph = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
@@ -18,7 +15,4 @@ graph = {
     'F': []
 }
 
-# Start DFS from A
-print("DFS Traversal:")
-visited = set()
-dfs(graph, 'A', visited)
+dfs(graph, 'A', set())
