@@ -1,22 +1,18 @@
 from collections import deque
 
-# BFS function
 def bfs(graph, start):
-    visited = set()          # To keep track of visited nodes
-    queue = deque([start])   # Initialize queue with start node
-    visited.add(start)
+    visited = {start}
+    q = deque([start])
 
-    while queue:
-        node = queue.popleft()
+    while q:
+        node = q.popleft()
         print(node, end=" ")
 
-        # Visit all unvisited neighbors
-        for neighbor in graph[node]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
+        for n in graph[node]:
+            if n not in visited:
+                visited.add(n)
+                q.append(n)
 
-# Graph represented as an adjacency list
 graph = {
     'A': ['B', 'C'],
     'B': ['D', 'E'],
@@ -26,6 +22,4 @@ graph = {
     'F': []
 }
 
-# Start BFS from node A
-print("BFS Traversal:")
 bfs(graph, 'A')
